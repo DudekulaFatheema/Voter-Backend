@@ -74,7 +74,8 @@ import com.voter.repository.VoterRepository;
      assertEquals("male", registeredVoter.getGender());
      assertEquals(56743865, registeredVoter.getPhoneNumber());
  assertEquals("mario", registeredVoter.getUserName());
-  assertEquals(43, registeredVoter.getId());
+  assertEquals("js123", registeredVoter.getPassWord());
+  assertEquals(56, registeredVoter.getId());
 	
 	
 
