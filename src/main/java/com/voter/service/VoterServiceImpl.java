@@ -115,11 +115,7 @@ public class VoterServiceImpl  implements VoterService {
 	}
 
 
-	@Override
-	public List<Voter> findByCandId(String candId) {
-		// TODO Auto-generated method stub
-		return voterRepository.findByCandId(candId);
-	}
+	
 	
 
 
