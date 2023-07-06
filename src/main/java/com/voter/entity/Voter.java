@@ -153,7 +153,7 @@ import javax.persistence.Table;
 
 
 
-		public String getId() {
+		public int getId() {
 			return id;
 		}
 
