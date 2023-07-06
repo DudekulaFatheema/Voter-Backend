@@ -18,5 +18,5 @@ public interface VoterRepository extends JpaRepository<Voter, Integer> {
 	@Query("from Voter v where v.userName=:userName and v.passWord=:passWord")
 	public Voter findVoterByuserNamepassWord(@Param(value="userName") String userName, @Param(value="passWord")String passWord);
 
-	public List<Voter> findByCandId(String candId);
+	
 }
