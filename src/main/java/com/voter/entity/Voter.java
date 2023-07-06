@@ -28,7 +28,7 @@ import javax.persistence.Table;
 		
 		private String passWord;
 		
-		private String candId;
+		private int id;
 		
 		
 		public Voter() {
@@ -40,7 +40,7 @@ import javax.persistence.Table;
 		
 
 		public Voter(int voterId, String name, String gender, int age, long phoneNumber, String userName, String passWord,
-				String candId) {
+				int id) {
 			super();
 			this.voterId = voterId;
 			this.name = name;
@@ -49,7 +49,7 @@ import javax.persistence.Table;
 			this.phoneNumber = phoneNumber;
 			this.userName = userName;
 			this.passWord = passWord;
-			this.candId = candId;
+			this.id = id;
 		}
 
 
@@ -153,15 +153,15 @@ import javax.persistence.Table;
 
 
 
-		public String getCandId() {
-			return candId;
+		public String getId() {
+			return id;
 		}
 
 
 
 
-		public void setCandId(String candId) {
-			this.candId = candId;
+		public void setId(int id) {
+			this.id = id;
 		}
 
 
@@ -170,7 +170,7 @@ import javax.persistence.Table;
 		@Override
 		public String toString() {
 			return "Voter [voterId=" + voterId + ", name=" + name + ", gender=" + gender + ", age=" + age + ", phoneNumber="
-					+ phoneNumber + ", userName=" + userName + ", passWord=" + passWord + ", candId=" + candId + "]";
+					+ phoneNumber + ", userName=" + userName + ", passWord=" + passWord + ", id=" + id + "]";
 		}
 
 	}
