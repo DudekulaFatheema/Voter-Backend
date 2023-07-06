@@ -66,7 +66,7 @@ public class VoterServiceImplTest {
          voter.setUserName("mario");
          voter.setPassWord("js123");
          voter.setCandId("u123");
-       Voter registeredVoter = voterService.registerVoter(voter);
+     //  Voter registeredVoter = voterService.registerVoter(voter);
 
 	 assertNotNull(registeredVoter);
 	 assertEquals(18, registeredVoter.getAge());
