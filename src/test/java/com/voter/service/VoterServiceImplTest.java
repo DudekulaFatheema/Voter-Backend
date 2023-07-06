@@ -11,9 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ import com.voter.repository.VoterRepository;
 
 
 @SpringBootTest
-public class VoterServiceImplTest {
+class VoterServiceImplTest {
 	
 	@Autowired
 	VoterRepository voterRepo;
@@ -42,8 +43,8 @@ public class VoterServiceImplTest {
       void createVoter() throws NullValueFoundException{
 		
 		 
-		Voter sampleInput = new Voter(8,"haseena","male", 15, 90876435, "haseena","haseen4","u76");
-		Voter expectedOutput = new Voter(8,"haseena","male", 18, 90879365, "haseen","has98","u76");
+		Voter sampleInput = new Voter(8,"haseena","male", 15, 90876435, "haseena","haseen4");
+		Voter expectedOutput = new Voter(8,"haseena","male", 18, 90879365, "haseen","has98");
 		
 		VoterService voterService = mock(VoterService.class);
         when(voterService.createVoter(sampleInput)).thenReturn(expectedOutput);
@@ -55,14 +56,37 @@ public class VoterServiceImplTest {
         assertEquals(expectedOutput, actualOutput);
 	}
 	
+	@Test
+	void registerVoter() throws NullUserFound, NullUserNameFoundException {
+		
+         Voter voter = new Voter();
+          voter.setAge(18);
+          voter.setName("haseena");
+		 voter.setGender("male");
+		 voter.setPhoneNumber(56743865);
+         voter.setUserName("mario");
+         voter.setPassWord("js123");
+        
+       Voter registeredVoter = voterService.registerVoter(voter);
 
+	 assertNotNull(registeredVoter);
+	 assertEquals(18, registeredVoter.getAge());
+      assertEquals("haseena", registeredVoter.getName());
+     assertEquals("male", registeredVoter.getGender());
+     assertEquals(56743865, registeredVoter.getPhoneNumber());
+ assertEquals("mario", registeredVoter.getUserName());
+  assertEquals("js123", registeredVoter.getPassWord());
+	
+	
+
+}
 	
 	@Test
 	void UpdateVoter() throws Exception {
 // Create a team member with valid ID and updated name
 
-		Voter sampleInput = new Voter(8,"haseena","male", 15, 90876435, "haseena","haseen4","u213");
-		Voter expectedOutput = new Voter(8,"haseena","male", 18, 90879365, "haseen","has98","u213");
+		Voter sampleInput = new Voter(8,"haseena","male", 15, 90876435, "haseena","haseen4");
+		Voter expectedOutput = new Voter(8,"haseena","male", 18, 90879365, "haseen","has98");
 
 		 
 
@@ -88,8 +112,8 @@ public class VoterServiceImplTest {
 	
 	void testGetAllVoters() throws Exception{
 		
-		 Voter voter1 = new Voter(8,"haseena","male", 15, 90876435, "haseena","haseen4","u213");
-		Voter voter2 = new Voter(8,"haseena","male", 18, 90879365, "haseen","has98","u213");
+		 Voter voter1 = new Voter(8,"haseena","male", 15, 90876435, "haseena","haseen4");
+		Voter voter2 = new Voter(8,"haseena","male", 18, 90879365, "haseen","has98");
 		
 	     List<Voter> sampleOutput = new ArrayList<>();
 		sampleOutput.add(voter1);
@@ -105,17 +129,6 @@ public class VoterServiceImplTest {
 	        assertNotNull(actualOutput);
 	        assertIterableEquals(sampleOutput, actualOutput);
 	    }
-	
-	
-	//@Test
-	//void testDeleteByVoterId_NonExistentId() throws Exception {
-	    // Arrange
-	    //int voterId = 999;
-
-	    // Act and Assert
-	   // assertThrows(Exception.class, () -> voterService.deleteByVoterId(voterId));
-	    // Additional assertions can be performed to verify the exception message or behavior
-	//}
 	
 	
 
@@ -138,6 +151,8 @@ public class VoterServiceImplTest {
 	    // Act and Assert
 	    assertThrows(NullUserFound.class, () -> voterService.loginVoter(userName, password));
 	}
+	
+	
 	
 	}
 
